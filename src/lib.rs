@@ -1,6 +1,6 @@
 use std::error::Error;
 use std::fs::File;
-use std::io::{self, BufRead, BufReader};
+use std::io::{ BufRead, BufReader};
 use clap::{Arg, Command};
 
 use opencv::{
@@ -8,7 +8,7 @@ use opencv::{
     core,
     imgcodecs,
     imgproc,
-    highgui,
+    //highgui,
 };
 
 #[derive(Debug)]
@@ -42,7 +42,7 @@ pub fn find_stars(config: Config) -> AppResult<()>{
     let output = imgproc::connected_components_with_stats(&thresh, &mut labels, &mut stats, &mut centroids, connectivity, core::CV_16U);//core::CV_32S);
     //let output = imgproc::connected_components(&thresh, &mut labels, connectivity,  core::CV_16U);//core::CV_32S);
 
-///    println!("labels: {:#?}\n", labels);
+    //  println!("labels: {:#?}\n", labels);
     println!("stats: {:#?}\n", stats.at_2d::<i32>(1, 1));
     println!("stats: rows: {} \t cols: {}\n", stats.rows(), stats.cols());
 
