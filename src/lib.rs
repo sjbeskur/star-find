@@ -43,7 +43,7 @@ pub fn find_stars(config: Config) -> AppResult<()>{
     //let output = imgproc::connected_components(&thresh, &mut labels, connectivity,  core::CV_16U);//core::CV_32S);
 
     //  println!("labels: {:#?}\n", labels);
-    println!("stats: {:#?}\n", stats.at_2d::<i32>(1, 1));
+    println!("stats: {:#?}\n", stats);
     println!("stats: rows: {} \t cols: {}\n", stats.rows(), stats.cols());
 
     for r in 1..stats.rows(){    // 0 is the background
@@ -53,8 +53,18 @@ pub fn find_stars(config: Config) -> AppResult<()>{
                                 , stats.at_2d::<i32>(r, 3)? 
                                 , stats.at_2d::<i32>(r, 4)?);
     }
-//    println!("centroids: {:#?}\n", centroids);
-    println!("{:#?}", output);
+
+
+    println!("centroids: {:#?}\n", centroids);
+    for r in 1..centroids.rows(){    // 0 is the background
+        for c in 0..centroids.cols(){
+            print!("{} , ",centroids.at_2d::<f64>(r, c)?);
+        }
+        println!("");
+    }
+
+
+    println!("\n total stars: {:#?}", output? - 1);
 
     //highgui::imshow("", &labels)?;
     //highgui::wait_key(0)?;
