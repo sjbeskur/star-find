@@ -46,7 +46,7 @@ pub fn find_stars(config: Config) -> AppResult<()>{
     println!("stats: {:#?}\n", stats.at_2d::<i32>(1, 1));
     println!("stats: rows: {} \t cols: {}\n", stats.rows(), stats.cols());
 
-    for r in 1..stats.rows(){    
+    for r in 1..stats.rows(){    // 0 is the background
         println!("({} , {}) => {} - {} - {}", stats.at_2d::<i32>(r, 0)?
                                 , stats.at_2d::<i32>(r, 1)?
                                 , stats.at_2d::<i32>(r, 2)? 
