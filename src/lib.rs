@@ -35,10 +35,10 @@ struct Centroids{
 
 
 pub fn find_stars(config: Config) -> AppResult<()>{
-    dbg!(&config);
     let filename = config.file;
     let connectivity = config.connectivity as i32; 
 
+    if ! std::path::Path::new(&filename).exists() { return Err(format!("File: '{filename}'. not found\n").into()); };
     let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;// )?;
     //let grayscale_image  = cv::imgproc::cvt_color(src, cv::imgproc::COLOR_HSV2BGR);
 
@@ -105,13 +105,3 @@ pub fn open(filename: &str) -> AppResult<Box<dyn BufRead>> {
 }
 
 
-
-
-#[cfg(test)]
-mod tests {
-
-    #[test]
-    fn test_blob_finder() {
-        assert_eq!(true, false);
-    }
-}
