@@ -37,27 +37,34 @@ struct Centroids{
 pub fn find_stars(config: Config) -> AppResult<()>{
     dbg!(&config);
     let filename = config.file;
-    let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;
+    let connectivity = config.connectivity as i32; 
+
+    let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;// )?;
     //let grayscale_image  = cv::imgproc::cvt_color(src, cv::imgproc::COLOR_HSV2BGR);
 
-    // Threshold it so it becomes binary
+    /* 
+    let mut gray_image = Mat::default();
+    if src.channels() == 3{
+         imgproc::cvt_color(&src, &mut gray_image, imgproc::COLOR_BGR2GRAY, 0)?;
+    }else{
+        gray_image = src.clone();
+    }
+    */
+
     let mut thresh = Mat::default();
 
+    // Threshold it so it becomes binary
     let _t =
         imgproc::threshold(&src, &mut thresh, 0.0, 255.0, imgproc::THRESH_BINARY | imgproc::THRESH_OTSU)?;
 
-    let connectivity = config.connectivity as i32; 
-
+    
     let mut labels = Mat::default();
     let mut stats = Mat::default();
     let mut centroids = Mat::default();
     // Perform the operation
     let output = imgproc::connected_components_with_stats(&thresh, &mut labels, &mut stats, &mut centroids, connectivity, core::CV_16U);//core::CV_32S);
 
-    //  println!("labels: {:#?}\n", labels);
     println!("stats: {:#?}\n", stats);
-    println!("stats: rows: {} \t cols: {}\n", stats.rows(), stats.cols());
-
 
     for r in 1..stats.rows(){    // 0 is the background
         let stat = Stats{
