@@ -22,20 +22,26 @@ cd build && make -j8 && sudo make install
 ```
 
 
-### Build StarryNight 
+### Build 
 ```
-    git clone <this repo>
-    cd starrynight
-    cargo build [--release or --debug]
+git clone https://github.com/sjbeskur/starrynight.git
+cd starrynight
+cargo build
 ```
 
-### Run StarryNight
+### Run
 Once the cargo build completes all build artifacts will be placed in the target directory under debug or release depending on the flag you set above.
 
 To run the application simply:
 ```
-    ./target/release/starrynight <path to starts>
-
-    ./target/release/starrynight <./img/71_stars.png>
+./target/release/starrynight <path to starts>
 ```
+
+e.g.
+```
+./target/release/starrynight ./img/71_stars.png
+```
+
+### Help:
+
 ![help](img/help.png)
