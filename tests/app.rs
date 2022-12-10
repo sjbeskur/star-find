@@ -68,6 +68,15 @@ fn test_cvmat_eye_at() -> TestResult{
     assert_eq!(0.0, *eye.at::<f64>(6)?);
     assert_eq!(0.0, *eye.at::<f64>(7)?);
     assert_eq!(1.0, *eye.at::<f64>(8)?);
+    // that was awkward ^
+
+    assert_eq!(1.0, *eye.at_2d::<f64>(0,0)?);
+    assert_eq!(1.0, *eye.at_2d::<f64>(1,1)?);
+    assert_eq!(1.0, *eye.at_2d::<f64>(2,2)?);
+    // slightly more intuitive ? ^
+
+    let _zeros = Mat::zeros(4, 4, f64::typ())?.to_mat();
+
     Ok(())  
 
 }
