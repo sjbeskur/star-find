@@ -43,24 +43,15 @@ pub fn run(config: Config) -> AppResult<()> {
         Ok(mut file) =>{
             let mut buffer : Vec<u8> = Vec::new();
             let _read_count = file.read_to_end(&mut buffer)?;
-            let _result = imgcodecs::imdecode(&VectorOfu8::from_iter(buffer), imgcodecs::IMREAD_COLOR); // IMREAD_GRAYSCALE);
+            let result = imgcodecs::imdecode(&VectorOfu8::from_iter(buffer), imgcodecs::IMREAD_GRAYSCALE); // IMREAD_GRAYSCALE);
+            //let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;// )?;
+            find_stars(result?,config.connectivity as i32)?
         },        
     };
     Ok(())    
 }
 
-pub fn find_stars(config: Config) -> AppResult<()>{
-    let filename = config.filename;
-    let connectivity = config.connectivity as i32; 
-
-    if ! std::path::Path::new(&filename).exists() { return Err(format!("File: '{filename}'. not found\n").into()); };
-    let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;// )?;
-
-    /* 
-        let mut gray_image = Mat::default();
-        if src.channels() == 3{ imgproc::cvt_color(&src, &mut gray_image, imgproc::COLOR_BGR2GRAY, 0)?;
-        }else{ gray_image = src.clone(); }
-    */
+pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<()>{
 
     // Threshold it so it becomes binary
     let mut thresh = Mat::default();
@@ -109,7 +100,7 @@ pub fn find_stars(config: Config) -> AppResult<()>{
 
 
 pub fn open(filename: &str) -> AppResult<Box<dyn BufRead>> {
-    Ok(Box::new(BufReader::new(File::open(filename).expect("File not found"))))
+    Ok(Box::new(BufReader::new(File::open(filename)?)))
 }
 
 

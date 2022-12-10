@@ -7,6 +7,7 @@ use opencv::prelude::*;
 
 type TestResult = Result<(), Box<dyn Error>>;
 const PRG: &str = "starrynight";
+const FOUR_STARS: &str = "tests/inputs/4_stars.png";
 //const EMPTY: &str = "tests/inputs/empty.txt";
 //const BUSTLE: &str = "tests/inputs/the-bustle.txt";
 
@@ -38,18 +39,15 @@ fn gen_bad_file() -> String {
 }
 
 // --------------------------------------------------
-//#[test]
+#[test]
 fn skips_bad_file() -> TestResult {
     let bad = gen_bad_file();
-    //let expected = format!("{}: .* [(]os error 2[)]", bad);
-    let expected = format!("File: '{}'. not found\n", bad);
-    println!("EXPECTED:  {}", expected);
+    let expected = format!(".* [(]os error 2[)]");
     Command::cargo_bin(PRG)?
         .arg(&bad)
         .assert()
         .success()
-        .stderr(predicate::str::contains("not found".to_string()));
-        //.stderr(predicate::str::is_match(expected)?);
+        .stderr(predicate::str::is_match(expected)?);
     Ok(())
 }
 
