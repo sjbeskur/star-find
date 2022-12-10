@@ -20,8 +20,7 @@ type AppResult<T> = Result<T, Box<dyn Error>>;
 
 #[derive(Debug)]
 struct Stats{
-    u: i32,
-    v: i32,
+    point: opencv::core::Point,
     width: i32,
     height: i32,
     area: i32,
@@ -76,9 +75,13 @@ pub fn find_stars(config: Config) -> AppResult<()>{
     println!("stats: {:#?}\n", stats);
 
     for r in 1..stats.rows(){    // 0 is the background
-        let stat = Stats{
-            u: *stats.at_2d::<i32>(r, imgproc::CC_STAT_LEFT)?,
-            v: *stats.at_2d::<i32>(r, imgproc::CC_STAT_TOP)? ,
+        let p = opencv::core::Point::new(
+            *stats.at_2d::<i32>(r, imgproc::CC_STAT_LEFT)?,
+            *stats.at_2d::<i32>(r, imgproc::CC_STAT_TOP)? ,
+        );
+
+        let stat = Stats{            
+            point: p,
             width: *stats.at_2d::<i32>(r, imgproc::CC_STAT_WIDTH)? ,
             height: *stats.at_2d::<i32>(r, imgproc::CC_STAT_HEIGHT)? ,
             area: *stats.at_2d::<i32>(r, imgproc::CC_STAT_AREA)? ,
