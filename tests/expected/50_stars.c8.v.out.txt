@@ -1,0 +1,102 @@
+Stats { point: Point_ { x: 284, y: 15 }, width: 2, height: 3, area: 6 }
+Stats { point: Point_ { x: 414, y: 15 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 157, y: 16 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 228, y: 18 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 340, y: 18 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 289, y: 42 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 337, y: 43 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 230, y: 44 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 414, y: 44 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 162, y: 46 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 288, y: 61 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 229, y: 65 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 332, y: 64 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 164, y: 68 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 417, y: 68 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 287, y: 84 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 232, y: 89 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 168, y: 90 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 332, y: 92 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 415, y: 94 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 415, y: 116 }, width: 3, height: 3, area: 7 }
+Stats { point: Point_ { x: 171, y: 118 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 231, y: 118 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 287, y: 118 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 332, y: 118 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 345, y: 165 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 421, y: 165 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 172, y: 168 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 230, y: 168 }, width: 3, height: 2, area: 6 }
+Stats { point: Point_ { x: 288, y: 168 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 287, y: 215 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 339, y: 215 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 415, y: 215 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 169, y: 221 }, width: 2, height: 2, area: 3 }
+Stats { point: Point_ { x: 231, y: 220 }, width: 2, height: 2, area: 3 }
+Stats { point: Point_ { x: 171, y: 286 }, width: 2, height: 2, area: 3 }
+Stats { point: Point_ { x: 231, y: 288 }, width: 2, height: 2, area: 3 }
+Stats { point: Point_ { x: 292, y: 288 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 344, y: 288 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 419, y: 293 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 173, y: 348 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 232, y: 348 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 295, y: 354 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 348, y: 354 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 418, y: 361 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 168, y: 417 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 235, y: 416 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 295, y: 419 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 348, y: 425 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 421, y: 430 }, width: 2, height: 2, area: 4 }
+Centroids { x: 284.5, y: 16.0 }
+Centroids { x: 414.5, y: 15.5 }
+Centroids { x: 157.5, y: 16.5 }
+Centroids { x: 228.5, y: 18.5 }
+Centroids { x: 340.5, y: 18.5 }
+Centroids { x: 289.5, y: 42.5 }
+Centroids { x: 337.5, y: 43.5 }
+Centroids { x: 230.5, y: 44.5 }
+Centroids { x: 414.5, y: 44.5 }
+Centroids { x: 162.5, y: 46.5 }
+Centroids { x: 288.5, y: 61.5 }
+Centroids { x: 229.5, y: 65.5 }
+Centroids { x: 332.5, y: 64.5 }
+Centroids { x: 164.5, y: 68.5 }
+Centroids { x: 417.5, y: 68.5 }
+Centroids { x: 287.5, y: 84.5 }
+Centroids { x: 232.5, y: 89.5 }
+Centroids { x: 168.5, y: 90.5 }
+Centroids { x: 332.5, y: 92.5 }
+Centroids { x: 415.5, y: 94.5 }
+Centroids { x: 416.0, y: 117.0 }
+Centroids { x: 171.5, y: 118.5 }
+Centroids { x: 231.5, y: 118.5 }
+Centroids { x: 287.5, y: 118.5 }
+Centroids { x: 332.5, y: 118.5 }
+Centroids { x: 345.5, y: 165.5 }
+Centroids { x: 421.5, y: 165.5 }
+Centroids { x: 172.5, y: 168.5 }
+Centroids { x: 231.0, y: 168.5 }
+Centroids { x: 288.5, y: 168.5 }
+Centroids { x: 287.5, y: 215.5 }
+Centroids { x: 339.5, y: 215.5 }
+Centroids { x: 415.5, y: 215.5 }
+Centroids { x: 169.33333333333334, y: 221.66666666666666 }
+Centroids { x: 231.66666666666666, y: 220.33333333333334 }
+Centroids { x: 171.33333333333334, y: 286.6666666666667 }
+Centroids { x: 231.66666666666666, y: 288.3333333333333 }
+Centroids { x: 292.5, y: 288.5 }
+Centroids { x: 344.5, y: 288.5 }
+Centroids { x: 419.5, y: 293.5 }
+Centroids { x: 173.5, y: 348.5 }
+Centroids { x: 232.5, y: 348.5 }
+Centroids { x: 295.5, y: 354.5 }
+Centroids { x: 348.5, y: 354.5 }
+Centroids { x: 418.5, y: 361.5 }
+Centroids { x: 168.5, y: 417.5 }
+Centroids { x: 235.5, y: 416.5 }
+Centroids { x: 295.5, y: 419.5 }
+Centroids { x: 348.5, y: 425.5 }
+Centroids { x: 421.5, y: 430.5 }
+
+ total stars: 50

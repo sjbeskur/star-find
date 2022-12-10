@@ -8,6 +8,7 @@ use opencv::prelude::*;
 type TestResult = Result<(), Box<dyn Error>>;
 const PRG: &str = "starrynight";
 const FOUR_STARS: &str = "tests/inputs/4_stars.png";
+const FIFTY_STARS: &str = "tests/inputs/50_stars.png";
 //const EMPTY: &str = "tests/inputs/empty.txt";
 //const BUSTLE: &str = "tests/inputs/the-bustle.txt";
 
@@ -72,6 +73,12 @@ fn four_stars_c8() -> TestResult {
 fn four_stars_c4() -> TestResult {
     run(&["-c", "4", FOUR_STARS],"tests/expected/4_stars.out.txt" )
 }
+
+#[test]
+fn fifty_stars_c8_verbose() -> TestResult {
+    run(&["-c", "8", FIFTY_STARS],"tests/expected/50_stars.c8.v.out.txt" )
+}
+
 
 
 #[test]
