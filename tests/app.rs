@@ -10,7 +10,6 @@ const PRG: &str = "starrynight";
 const FOUR_STARS: &str = "tests/inputs/4_stars.png";
 const FIFTY_STARS: &str = "tests/inputs/50_stars.png";
 //const EMPTY: &str = "tests/inputs/empty.txt";
-//const BUSTLE: &str = "tests/inputs/the-bustle.txt";
 
 // --------------------------------------------------
 #[test]
