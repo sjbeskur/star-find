@@ -1,9 +1,5 @@
 # StarryNight
-Paint your pallet blue and gray, 
-
-Look out on a summers day,
-
-With eyes that know the darknes in my soul.
+Paint your pallet blue and gray, Look out on a summers day, With eyes that know the darknes in my soul.
 
 ![image](img/vincent.png)
 
@@ -34,7 +30,7 @@ Once the cargo build completes all build artifacts will be placed in the target 
 
 To run the application simply:
 ```
-./target/release/starrynight <path to starts>
+./target/release/starrynight <path_to_image>
 ```
 
 e.g.

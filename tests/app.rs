@@ -3,9 +3,9 @@ use predicates::prelude::*;
 use rand::{distributions::Alphanumeric, Rng};
 use std::error::Error;
 use std::fs;
+use opencv::prelude::*;
 
 type TestResult = Result<(), Box<dyn Error>>;
-
 const PRG: &str = "starrynight";
 //const EMPTY: &str = "tests/inputs/empty.txt";
 //const BUSTLE: &str = "tests/inputs/the-bustle.txt";
@@ -43,10 +43,31 @@ fn skips_bad_file() -> TestResult {
     let bad = gen_bad_file();
     //let expected = format!("{}: .* [(]os error 2[)]", bad);
     let expected = format!("File: '{}'. not found\n", bad);
+    println!("EXPECTED:  {}", expected);
     Command::cargo_bin(PRG)?
         .arg(&bad)
         .assert()
         .success()
-        .stderr(predicate::str::is_match(expected)?);
+        .stderr(predicate::str::contains("not found".to_string()));
+        //.stderr(predicate::str::is_match(expected)?);
     Ok(())
+}
+
+#[test]
+fn test_cvmat_eye_at() -> TestResult{
+    let eye = Mat::eye(3,3,f64::typ())? ;
+    let eye = eye.to_mat()?;
+    assert_eq!(1.0, *eye.at::<f64>(0)?);
+    assert_eq!(0.0, *eye.at::<f64>(1)?);
+    assert_eq!(0.0, *eye.at::<f64>(2)?);
+
+    assert_eq!(0.0, *eye.at::<f64>(3)?);
+    assert_eq!(1.0, *eye.at::<f64>(4)?);    
+    assert_eq!(0.0, *eye.at::<f64>(5)?);
+
+    assert_eq!(0.0, *eye.at::<f64>(6)?);
+    assert_eq!(0.0, *eye.at::<f64>(7)?);
+    assert_eq!(1.0, *eye.at::<f64>(8)?);
+    Ok(())  
+
 }
