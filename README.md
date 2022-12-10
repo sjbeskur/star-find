@@ -59,4 +59,4 @@ e.g.
 
 ### Addendum
 
-While trying to understand more about moments, I came across an [entire book dedicated](https://www.amazon.com/gp/product/0470699876/) to the subject w.r.t pattern recognition.
+While trying to understand more about moments, I came across an [entire book dedicated](https://www.amazon.com/gp/product/0470699876/) to the subject w.r.t pattern recognition.  Unfortunately, this book is pricey and the bird that currently flies over my head sings "cheap, cheap".
