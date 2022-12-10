@@ -52,6 +52,7 @@ e.g.
 ### TODO
 
 - disagregate app(main ) from lib
+- build for arm7 and aarm64
 - add verbosity levels
 - output to file
 - better stats and centroids
