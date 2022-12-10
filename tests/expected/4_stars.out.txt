@@ -1,0 +1,10 @@
+Stats { point: Point_ { x: 171, y: 118 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 231, y: 118 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 172, y: 168 }, width: 2, height: 2, area: 4 }
+Stats { point: Point_ { x: 230, y: 168 }, width: 3, height: 2, area: 6 }
+Centroids { x: 171.5, y: 118.5 }
+Centroids { x: 231.5, y: 118.5 }
+Centroids { x: 172.5, y: 168.5 }
+Centroids { x: 231.0, y: 168.5 }
+
+ total stars: 4

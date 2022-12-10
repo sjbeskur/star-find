@@ -63,7 +63,6 @@ pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<()>{
     let mut centroids = Mat::default();
     let output = imgproc::connected_components_with_stats(&thresh, &mut labels, &mut stats, &mut centroids, connectivity, core::CV_16U);//core::CV_32S);
 
-    println!("stats: {:#?}\n", stats);
 
     for r in 1..stats.rows(){    // 0 is the background
         let p = opencv::core::Point::new(
@@ -81,7 +80,6 @@ pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<()>{
     }
 
 
-    println!("centroids: {:#?}\n", centroids);
     for r in 1..centroids.rows(){    // 0 is the background
         let cent = Centroids{
             x: *centroids.at_2d::<f64>(r, 0)?,

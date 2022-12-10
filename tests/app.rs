@@ -51,6 +51,29 @@ fn skips_bad_file() -> TestResult {
     Ok(())
 }
 
+// --------------------------------------------------
+fn run(args: &[&str], expected_file: &str) -> TestResult {
+    let expected = fs::read_to_string(expected_file)?;
+    Command::cargo_bin(PRG)?
+        .args(args)
+        .assert()
+        .success()
+        .stdout(expected);
+    Ok(())
+}
+
+// --------------------------------------------------
+#[test]
+fn four_stars_c8() -> TestResult {
+    run(&["-c", "8", FOUR_STARS],"tests/expected/4_stars.out.txt" )
+}
+
+#[test]
+fn four_stars_c4() -> TestResult {
+    run(&["-c", "4", FOUR_STARS],"tests/expected/4_stars.out.txt" )
+}
+
+
 #[test]
 fn test_cvmat_eye_at() -> TestResult{
     let eye = Mat::eye(3,3,f64::typ())? ;
