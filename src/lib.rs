@@ -4,6 +4,7 @@ mod cli;
 use std::error::Error;
 use std::fs::File;
 use std::io::{ BufRead, BufReader};
+use serde::{Serialize, Deserialize};
 
 use opencv::{
     prelude::*,
@@ -18,6 +19,7 @@ pub use cli::{Config, get_args};
 
 type AppResult<T> = Result<T, Box<dyn Error>>;
 
+//#[derive(Debug, Serialize, Deserialize, Clone)]
 #[derive(Debug)]
 struct Stats{
     point: opencv::core::Point,
@@ -27,7 +29,7 @@ struct Stats{
 }
 
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 struct Centroids{
     x: f64,
     y: f64,
