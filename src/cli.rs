@@ -1,5 +1,18 @@
-use clap::{Arg, Command};
+use clap::{Parser};
 
+#[derive(Debug, Parser)]
+#[command(author="Sam Beskur <sam.beskur@gmail.com>", version, about="Blob detector for stars", long_about = "A very basic demonstration of OpenCV CCL w/Stats funtionality.")]
+#[command(propagate_version = true)]
+pub struct Config{
+    pub filename: String,
+
+    #[arg(short = 'c', long = "connectivity", default_value_t = 4 )]
+    pub connectivity: u8,  // TODO: figure out how to only allow 4 or 8?
+}
+
+
+/* 
+use clap::{Arg, Command};
 
 #[derive(Debug)]
 pub struct Config{
@@ -38,3 +51,5 @@ pub fn get_args() -> super::AppResult<Config> {
         connectivity: *matches.get_one::<u8>("connectivity").unwrap(),
     })
 }
+
+*/

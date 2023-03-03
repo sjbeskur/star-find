@@ -15,7 +15,7 @@ use opencv::{
     //highgui,
 };
 
-pub use cli::{Config, get_args};
+pub use cli::{Config};
 
 type AppResult<T> = Result<T, Box<dyn Error>>;
 

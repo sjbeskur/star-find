@@ -1,8 +1,8 @@
-
+use clap::{Parser};
 fn main() {
-    let args = starrynight::get_args();
+    let args = starrynight::Config::parse();
 
-    match starrynight::run(args.unwrap()){
+    match starrynight::run(args){
         Ok(blobs) => {
             let json = serde_json::to_string_pretty(&blobs).unwrap();
             println!("{}", json);    //?;
