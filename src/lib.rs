@@ -1,10 +1,10 @@
 #![allow(dead_code)]
 mod cli;
-
+use log::{debug}; //info, trace, warn, error, 
 use std::error::Error;
 use std::fs::File;
-use std::io::{ BufRead, BufReader};
-use serde::{Serialize, Deserialize};
+use std::io::{ BufRead, BufReader };
+use serde::{ Serialize, Deserialize };
 
 use opencv::{
     prelude::*,
@@ -19,41 +19,40 @@ pub use cli::{Config, get_args};
 
 type AppResult<T> = Result<T, Box<dyn Error>>;
 
-//#[derive(Debug, Serialize, Deserialize, Clone)]
-#[derive(Debug)]
-struct Stats{
-    point: opencv::core::Point,
-    width: i32,
-    height: i32,
-    area: i32,
+#[derive(Debug, Serialize, Deserialize, Clone)]
+pub struct Point{
+    pub x: f64,
+    pub y: f64,
 }
-
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
-struct Centroids{
-    x: f64,
-    y: f64,
+pub struct BlobStats{
+    pub point: Point,
+    pub width: i32,
+    pub height: i32,
+    pub area: i32,
 }
+
 
 /// This is vestigial at the moment but I want to move to this as an alternative
 /// to imread(...) as it offers a bit more fine grain control and I can clean up the
 /// error handling
-pub fn run(config: Config) -> AppResult<()> {
-    match open(&config.filename) {
-        Err(err) => eprintln!("{}", err),
+pub fn run(config: Config) -> AppResult<Vec<BlobStats>> {
+    let mut file = open(&config.filename)?;
 
-        Ok(mut file) =>{
-            let mut buffer : Vec<u8> = Vec::new();
-            let _read_count = file.read_to_end(&mut buffer)?;
-            let result = imgcodecs::imdecode(&VectorOfu8::from_iter(buffer), imgcodecs::IMREAD_GRAYSCALE); // IMREAD_GRAYSCALE);
-            //let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;// )?;
-            find_stars(result?,config.connectivity as i32)?
-        },        
-    };
-    Ok(())    
+    let mut buffer : Vec<u8> = Vec::new();
+    let _read_count = file.read_to_end(&mut buffer)?;
+    let result = imgcodecs::imdecode(&VectorOfu8::from_iter(buffer), imgcodecs::IMREAD_GRAYSCALE); // IMREAD_GRAYSCALE);
+    //let src = imgcodecs::imread(&filename, imgcodecs::IMREAD_GRAYSCALE)?;// )?;
+    
+    find_stars(result?,config.connectivity as i32)
 }
 
-pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<()>{
+/// 
+/// 
+/// 
+/// 
+fn find_stars(src: Mat, connectivity: i32) -> AppResult<Vec<BlobStats>>{
 
     // Threshold it so it becomes binary
     let mut thresh = Mat::default();
@@ -65,34 +64,26 @@ pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<()>{
     let mut centroids = Mat::default();
     let output = imgproc::connected_components_with_stats(&thresh, &mut labels, &mut stats, &mut centroids, connectivity, core::CV_16U);//core::CV_32S);
 
-
+    let mut blobs = Vec::new();
     for r in 1..stats.rows(){    // 0 is the background
-        let p = opencv::core::Point::new(
-            *stats.at_2d::<i32>(r, imgproc::CC_STAT_LEFT)?,
-            *stats.at_2d::<i32>(r, imgproc::CC_STAT_TOP)? ,
-        );
-
-        let stat = Stats{            
-            point: p,
-            width: *stats.at_2d::<i32>(r, imgproc::CC_STAT_WIDTH)? ,
+        let stat = BlobStats{            
+            point: Point{
+                x: *centroids.at_2d::<f64>(r, 0)?,
+                y: *centroids.at_2d::<f64>(r, 1)?,
+            },
+            width:  *stats.at_2d::<i32>(r, imgproc::CC_STAT_WIDTH)? ,
             height: *stats.at_2d::<i32>(r, imgproc::CC_STAT_HEIGHT)? ,
-            area: *stats.at_2d::<i32>(r, imgproc::CC_STAT_AREA)? ,
+            area:   *stats.at_2d::<i32>(r, imgproc::CC_STAT_AREA)? ,
         };
-        println!("{:?}",stat);
+        blobs.push(stat);
     }
 
+    let count = output? as usize - 1;
+    assert!(blobs.len() == count );
 
-    for r in 1..centroids.rows(){    // 0 is the background
-        let cent = Centroids{
-            x: *centroids.at_2d::<f64>(r, 0)?,
-            y: *centroids.at_2d::<f64>(r, 1)?,
-        };
-        println!("{:?}",cent);
-    }
+    debug!("Total blobs: {:#?}", count );
 
-    println!("\n total stars: {:#?}", output? - 1);
-
-    Ok(())
+    Ok(blobs)
 
 }
 
