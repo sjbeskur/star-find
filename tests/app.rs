@@ -78,6 +78,11 @@ fn fifty_stars_c8_verbose() -> TestResult {
     run(&["-c", "8", FIFTY_STARS],"tests/expected/50_stars.c8.v.out.txt" )
 }
 
+#[test]
+fn fifty_stars_c4_verbose() -> TestResult {
+    run(&["-c", "4", FIFTY_STARS],"tests/expected/50_stars.c4.v.out.txt" )
+}
+
 
 
 #[test]

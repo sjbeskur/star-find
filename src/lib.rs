@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 mod cli;
-
+use log::{debug}; //info, trace, warn, error, 
 use std::error::Error;
 use std::fs::File;
 use std::io::{ BufRead, BufReader };
@@ -48,11 +48,11 @@ pub fn run(config: Config) -> AppResult<Vec<BlobStats>> {
     find_stars(result?,config.connectivity as i32)
 }
 
-///
 /// 
 /// 
 /// 
-pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<Vec<BlobStats>>{
+/// 
+fn find_stars(src: Mat, connectivity: i32) -> AppResult<Vec<BlobStats>>{
 
     // Threshold it so it becomes binary
     let mut thresh = Mat::default();
@@ -75,19 +75,13 @@ pub fn find_stars(src: Mat, connectivity: i32) -> AppResult<Vec<BlobStats>>{
             height: *stats.at_2d::<i32>(r, imgproc::CC_STAT_HEIGHT)? ,
             area:   *stats.at_2d::<i32>(r, imgproc::CC_STAT_AREA)? ,
         };
-        println!("{:?}",stat);
         blobs.push(stat);
     }
 
     let count = output? as usize - 1;
     assert!(blobs.len() == count );
 
-    println!("\n Len: {}", count );
-    println!("\n blobs_results.blobs.len(): {}", blobs.len());
-    println!("\n total stars: {:#?}", count );
-
-    let json = serde_json::to_string_pretty(&blobs)?;
-    println!("{}",json);
+    debug!("Total blobs: {:#?}", count );
 
     Ok(blobs)
 
