@@ -82,7 +82,7 @@ fn fifty_stars_c8_verbose() -> TestResult {
 
 #[test]
 fn test_cvmat_eye_at() -> TestResult{
-    let eye = Mat::eye(3,3,f64::typ())? ;
+    let eye = Mat::eye(3,3, opencv::core::CV_64FC1)? ;
     let eye = eye.to_mat()?;
     assert_eq!(1.0, *eye.at::<f64>(0)?);
     assert_eq!(0.0, *eye.at::<f64>(1)?);
@@ -102,7 +102,7 @@ fn test_cvmat_eye_at() -> TestResult{
     assert_eq!(1.0, *eye.at_2d::<f64>(2,2)?);
     // slightly more intuitive ? ^
 
-    let _zeros = Mat::zeros(4, 4, f64::typ())?.to_mat();
+    let _zeros = Mat::zeros(4, 4, opencv::core::CV_64FC1)?.to_mat();
 
     Ok(())  
 
